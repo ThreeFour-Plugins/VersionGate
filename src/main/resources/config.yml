@@ -1,0 +1,56 @@
+# VersionGate Configuration
+# 
+# This plugin restricts player access to worlds and plugin interactions
+# based on their client protocol version obtained from ViaVersion.
+#
+# Protocol version numbers reference:
+# - 1.7.1: 4
+# - 1.7.2: 5
+# - 1.8.x: 47
+# - 1.12.x: 340
+# - 1.16.5: 754
+# - 1.17.1: 757
+# For more protocol numbers, see: https://wiki.vg/Protocol_version_numbers
+
+# World restrictions
+# Format: 
+#   world_name:
+#     blocked_versions: [list, of, protocol, versions]
+worlds:
+  world_nether:
+    blocked_versions: [47, 340]   # Block 1.8.x and 1.12.x
+  world_old:
+    blocked_versions: [5, 4]      # Block 1.7.2 & 1.7.1
+
+# Plugin interaction restrictions
+# Two types:
+# 1. blocked_by_version: plugins and which versions cannot use them
+# 2. versions: protocol versions and which plugins they cannot use
+plugin_interactions:
+  # Format: plugin_name: [list, of, protocol, versions]
+  blocked_by_version:
+    SomeFancyPlugin: [47, 340]    # Block 1.8.x and 1.12.x
+    AnotherPlugin: [754, 757]     # Block 1.16.5 and 1.17.1
+  
+  # Format: protocol_version: [list, of, plugin, names]
+  versions:
+    47: [BadPlugin, LegacyWarp]   # Block these plugins for 1.8.x
+    757: [DynamicShop]            # Block these plugins for 1.17.1
+
+# Messages displayed to players
+# Available placeholders:
+# - {version}: The player's protocol version
+# - {world}: The world name
+# - {plugin}: The plugin name
+messages:
+  # Message when player is kicked on login due to version restriction
+  kick_on_login: "&cYou are still on version {version}, which is not allowed in world \"{world}\"."
+  
+  # Message when teleport to a world is blocked due to version restriction
+  cancel_on_teleport: "&cTeleport blocked: your client version ({version}) cannot enter world \"{world}\"."
+  
+  # Message when a command is blocked due to plugin version restriction
+  cancel_on_command: "&cCommand blocked: plugin \"{plugin}\" is unavailable for your version ({version})."
+  
+  # Message when a plugin message is blocked due to version restriction
+  cancel_on_plugin_message: "&cAction blocked: plugin messages for \"{plugin}\" are disabled on your version ({version})." 

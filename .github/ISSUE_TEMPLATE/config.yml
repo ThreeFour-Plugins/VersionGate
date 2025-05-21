@@ -1,0 +1,11 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Feature Request
+    url: https://github.com/threefour-Plugins/VersionGate/issues/new?template=feature_request.md&labels=enhancement
+    about: Suggest a new feature or improvement
+  - name: Bug Report
+    url: https://github.com/threefour-Plugins/VersionGate/issues/new?template=bug_report.md&labels=bug
+    about: Report a bug or issue
+  - name: Question
+    url: https://github.com/threefour-Plugins/VersionGate/discussions/new?category=q-a
+    about: Ask a question about the plugin 

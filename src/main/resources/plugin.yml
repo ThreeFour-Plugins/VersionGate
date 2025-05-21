@@ -1,0 +1,26 @@
+name: VersionGate
+version: '${version}'
+main: me.threefour.versiongate.VersionGate
+api-version: '1.13'
+authors: [threefour]
+description: Restricts access to worlds and plugins based on client protocol version
+website: https://github.com/threefour/VersionGate
+softdepend: [ViaVersion]
+
+commands:
+  versiongate:
+    description: Main command for VersionGate plugin
+    usage: /<command> [reload|info]
+    aliases: [vg]
+    permission: versiongate.command
+
+permissions:
+  versiongate.command:
+    description: Allows usage of the /versiongate command
+    default: true
+  versiongate.reload:
+    description: Allows reloading the plugin configuration
+    default: op
+  versiongate.info:
+    description: Allows viewing plugin information
+    default: true
