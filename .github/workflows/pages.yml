@@ -31,6 +31,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       
       - name: Setup Node.js
         uses: actions/setup-node@v3
@@ -45,6 +47,9 @@ jobs:
       - name: Build VitePress documentation
         run: npm run docs:build
         
+      - name: Debug directory structure
+        run: ls -la .
+        
       - name: Setup Pages
         uses: actions/configure-pages@v5
         
@@ -52,7 +57,7 @@ jobs:
         uses: actions/upload-pages-artifact@v3
         with:
           # Upload docs build output
-          path: './docs/.vitepress/dist'
+          path: './public'
           
       - name: Deploy to GitHub Pages
         id: deployment

@@ -172,6 +172,7 @@ docs/.vitepress/cache/
 docs/public/
 .temp
 .cache
+public
 
 # OS specific
 .DS_Store
