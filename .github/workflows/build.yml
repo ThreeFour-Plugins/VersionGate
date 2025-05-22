@@ -57,9 +57,10 @@ jobs:
         with:
           node-version: '20'
           cache: 'npm'
+          cache-dependency-path: './package-lock.json'
           
       - name: Install dependencies
-        run: npm ci
+        run: npm ci || npm install
         
       - name: Build VitePress documentation
         run: npm run docs:build
