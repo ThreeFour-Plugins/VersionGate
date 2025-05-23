@@ -66,7 +66,15 @@ public class VersionGate extends JavaPlugin {
     
     private boolean checkViaVersion() {
         Plugin viaVersion = getServer().getPluginManager().getPlugin("ViaVersion");
-        return viaVersion != null && viaVersion.isEnabled();
+        if (viaVersion == null) {
+            getLogger().severe("ViaVersion plugin not found! Make sure ViaVersion.jar is in your plugins folder and loads BEFORE VersionGate.");
+            return false;
+        } else if (!viaVersion.isEnabled()) {
+            getLogger().severe("ViaVersion plugin found but it is NOT enabled! Check for errors in your server log.");
+            return false;
+        }
+        getLogger().info("ViaVersion plugin detected and enabled.");
+        return true;
     }
     
     public void loadConfig() {
