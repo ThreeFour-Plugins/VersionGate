@@ -1,7 +1,0 @@
-name: VersionGate
-version: '1.0'
-main: me.threefour.versiongate.VersionGate
-api-version: '1.21'
-load: STARTUP
-authors: [ Amineos ]
-description: unzip files in petrodactyl
